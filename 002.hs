@@ -13,3 +13,9 @@ solve termOfMax = solve' (1,1) 0
               solve' (x_im1,x_i) total
           else
             total
+
+test :: Bool
+test = (solve 89) == 44
+
+answer :: Int
+answer = solve 4000000

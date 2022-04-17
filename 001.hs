@@ -8,3 +8,9 @@ solve upper = foldr f 0 [1..(upper-1)]
 
 isDivisible :: Int -> Int -> Bool
 isDivisible x y = (x `mod` y) == 0
+
+test :: Bool
+test = (solve 10) == 23
+
+answer :: Int
+answer = solve 1000
