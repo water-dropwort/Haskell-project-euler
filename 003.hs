@@ -1,4 +1,4 @@
-module Problem3 where
+module Problem003 where
 
 isPrimeNum :: Integer -> Bool
 isPrimeNum n = isPrimeNum' 2

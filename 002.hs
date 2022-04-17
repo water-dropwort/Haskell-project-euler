@@ -1,4 +1,4 @@
-module Problem2 where
+module Problem002 where
 
 solve :: Int -> Int
 solve termOfMax = solve' (1,1) 0
