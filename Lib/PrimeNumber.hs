@@ -1,5 +1,6 @@
 module Lib.PrimeNumber ( isPrimeNum
                        , factorisation
+                       , factorisation'
                        , primeNums
                        , primeNums'
                        , eratosthenes) where
@@ -24,6 +25,18 @@ factorisation x
   | x <= 1    = []
   | otherwise = let p = head [v | v <- [2..], x `mod` v == 0]
                 in  p : factorisation (x `div` p)
+
+-- 素因数分解(p^n <--> (p,n) の形で返す)
+factorisation' :: (Integral a) => a -> [(a,a)]
+factorisation' x
+  | x <= 1    = []
+  | otherwise = let p = head [v | v <- [2..], x `mod` v == 0]
+                    n = pCount p 1
+                in  (p,n) : factorisation' (x `div` (p^n))
+  where
+    pCount p n
+      | x `mod` (p^n) /= 0 = n - 1
+      | otherwise          = pCount p (n+1)
 
 -- 素数のリスト
 primeNums :: (Integral a) => [a]
