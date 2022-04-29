@@ -5,13 +5,7 @@ import Data.STRef
 import GHC.Arr
 import Control.Monad
 import Control.Monad.ST
-
--- 真の約数
-proofDivisor :: Int -> [Int]
-proofDivisor n = [x | x <- [1..n`div`2], mod n x == 0]
-
-sumOfProofDivisor :: Int -> Int
-sumOfProofDivisor = sum . proofDivisor
+import Lib.Divisor
 
 solve :: Int -> Int
 solve n_max = foldl addAmicableNum 0 [1..n_max]
