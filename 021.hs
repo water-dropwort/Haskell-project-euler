@@ -10,8 +10,8 @@ import Lib.Divisor
 solve :: Int -> Int
 solve n_max = foldl addAmicableNum 0 [1..n_max]
   where
-    addAmicableNum total n = let b = sumOfProofDivisor n
-                             in  if n < b && n == sumOfProofDivisor b then total + n + b else total
+    addAmicableNum total n = let b = sumOfProperDivisor n
+                             in  if n < b && n == sumOfProperDivisor b then total + n + b else total
 
 answer :: Int
 answer = solve 9999
@@ -23,7 +23,7 @@ solve2 n_max = runST $ do
   srTotal <- newSTRef 0
   let getMemo i x = case x of
                       Just x' -> return x'
-                      Nothing -> do let b = sumOfProofDivisor i
+                      Nothing -> do let b = sumOfProperDivisor i
                                     writeSTArray memo i (Just b)
                                     return b
   forM_ [1..n_max] $ \a -> do
