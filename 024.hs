@@ -6,10 +6,8 @@ answer = solve (1000000-1)
 solve :: Int -> [Int]
 solve 0 = list
 solve n = let listMax = maximum list
-              (i,n') = divMod n $ permutation listMax
-              xs = remIndex list i
-              (_,res,xs') = foldl nextNumber (n',[],xs) [listMax-1,listMax-2..0]
-          in  i:res
+              (_,res,_) = foldl nextNumber (n,[],list) [listMax,listMax-1..0]
+          in  res
   where
     nextNumber (n',res,xs) j
       | xs == []  = (n',res,[])
